@@ -1,25 +1,25 @@
-效果图:
+###效果图:
 
 ![ThemeDemo.gif](http://upload-images.jianshu.io/upload_images/166866-f4a26bbeebb3fff9.gif?imageMogr2/auto-orient/strip)
 
 
-[Github](https://github.com/zzz40500/ThemeDemo)
-前面:
-实现的原理像我微博之前的说的那样.
+[Github](https://github.com/zzz40500/ThemeDemo)  
+###前面:  
+实现的原理像我微博之前的说的那样.  
 >关于多主题实现的,我这里的做法是继承AppCompatActivity,置换了AppCompatDelegate中AppCompatViewInflater中的createView 方法.实现了对 xml 控件的控制.
 
 
-实现:
+###实现:
 1. 实现了日夜模式的切换.(不重启 Acitivity )
 * 解决了因为快速点击 View 导致的多次响应点击事件.
 * 内部实现了 Android 5.0 的CircularReveal效果.
 
-优点:
-布局中直接使用 Android 默认的控件就可以.在解析以后会根据控件转换成支持主题切换的控件.
-缺点:
+###优点:
+布局中直接使用 Android 默认的控件就可以.在解析以后会根据控件转换成支持主题切换的控件.解放冗余的名称.
+###缺点:
 暂时不支持 Menu 级的切换.
 
-支持属性:
+###支持属性:
 View 级:  
 `nightBackground`  
 TextView 级:  
@@ -39,7 +39,7 @@ LinearLayout 级别:
 
 
 
-###gradle
+###gradle:
 /build.gradle
 ~~~
 jitpack.io
@@ -56,8 +56,9 @@ compile 'com.github.zzz40500:ThemeDemo:0.1'
 ~~~
 
 ##使用方法:
+####代码上
  Activity 继承MAppCompatActivity  
-布局上
+####布局上
 ~~~
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
@@ -117,7 +118,7 @@ compile 'com.github.zzz40500:ThemeDemo:0.1'
 处女座在根控件加入`tools:ignore="MissingPrefix"`
 
 
-###切换主题方法:
+####切换主题方法:
 ~~~
 
 
@@ -130,7 +131,8 @@ compile 'com.github.zzz40500:ThemeDemo:0.1'
 SkinCompat.setSkinStyle(Activity activity, SkinStyle skinStyle,SkinStyleChangeListener skinStyleChangeListener) 
 ~~~
 
-###使用CircularReveal 效果:
+####使用CircularReveal 效果:
+5.0 上面用的是原生的 api
 ~~~
  
 
@@ -146,6 +148,7 @@ if (crA != null)
 ###扩展:
 支持对原生控件的解析时期替换:
 ~~~
+这边很奇葩的把 TextView 变成了 EditText 控件,只是为了替换而替换.
 WidgetFactor.getInstant().setWidgetParser(new WidgetFactor.WidgetParser() {
     @Override
     public View parseWidget(String name, Context context, AttributeSet attrs) {
@@ -160,61 +163,12 @@ WidgetFactor.getInstant().setWidgetParser(new WidgetFactor.WidgetParser() {
 ~~~
 
 
-第三方控件支持CircularReveal效果:
-实现CircleRevealEnable这个接口:
-模板:
+第三方控件支持CircularReveal效果:  
+实现CircleRevealEnable这个接口,[模板](https://github.com/zzz40500/ThemeDemo/blob/master/%E6%A8%A1%E6%9D%BF)  
 ~~~
-/**
- * Created by zzz40500 on 15/8/26.
- */
-public class Button extends AppCompatButton implements CircleRevealEnable{
-
-    private CircleRevealHelper  mCircleRevealHelper ;
-   
-    public Button(Context context) {
-        super(context);
-        init(null);
-
-    }
-
-    public Button(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(attrs);
-    }
-
-    private void init(AttributeSet attrs) {
-
-        mCircleRevealHelper=new CircleRevealHelper(this);
-    }
-
-    public Button(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(attrs);
-    }
-
-    @Override
-    public void setOnClickListener(OnClickListener l) {
-        super.setOnClickListener(new SingleClickListener(l));
-    }
-
-    @Override
-    public void draw(Canvas canvas) {
-        mCircleRevealHelper.draw(canvas);
-    }
-
-    @Override
-    public void superDraw(Canvas canvas) {
-        super.draw(canvas);
-    }
-
-    @Override
-    public CRAnimation circularReveal(int centerX, int centerY, float startRadius, float endRadius) {
-       return mCircleRevealHelper.circularReveal(centerX,centerY,startRadius,endRadius);
-    }
-
-}
-~~~
-
+#尾巴:  
+1. 实现原理主要是受到代码家在[Google I/O 2015 为 Android 开发者带来了哪些福利](http://www.jianshu.com/p/4f7f55471da2)里面的启发.  
+* 我在项目中也仅仅只是用在解决快速点击 View 导致的多响应,和使用CircularReveal效果.日夜间模式并没有这个需求.  
 
 
 
