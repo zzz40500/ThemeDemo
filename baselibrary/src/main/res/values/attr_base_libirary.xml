@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CheckBox">
+        <attr name="dd" format="boolean"/>
+        <attr name="dd2" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="TextView">
+        <attr name="nightTextColor" format="color|reference"/>
+        <attr name="nightTextColorHighlight" format="color|reference"/>
+        <attr name="nightTextAppearance" format="reference"/>
+        <attr name="nightTextColorLink" format="reference|color"/>
+        <attr name="nightTextColorHint" format="color|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="View">
+        <attr name="nightBackground" format="color|reference"/>
+        <attr name="paddingStart" format="dimension"/>
+        <attr name="paddingEnd" format="dimension"/>
+        <attr name="android:focusable"/>
+        <attr name="theme" format="reference"/>
+        <attr name="android:theme"/>
+    </declare-styleable>
+    <declare-styleable name="LinearLayout">
+        <attr name="nightDivider" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="ListView">
+        <attr name="nightLVDivider" format="reference"/>
+    </declare-styleable>
+
+</resources>

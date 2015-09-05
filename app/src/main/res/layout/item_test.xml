@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                app:nightBackground="@color/night_bg"
+                android:background="@color/light_bg"
+                tools:ignore="MissingPrefix"
+                android:paddingTop="8dp">
+
+
+    <ImageView
+
+        android:id="@+id/avatarIV"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/nameTV"
+        app:nightTextColor="@color/night_tv_color"
+        app:nightBackground="@color/night_bg"
+        android:background="@color/light_bg"
+        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/avatarIV"
+        android:singleLine="true"
+        android:textAppearance="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
+
+        android:text="王四"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/avatarIV"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@+id/avatarIV">
+
+        <TextView
+            android:id="@+id/ageTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:singleLine="true"
+            android:text="年纪 14"
+            android:background="@color/light_bg"
+            app:nightTextColor="@color/night_tv_color"
+            app:nightBackground="@color/night_bg"
+            android:textAppearance="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+            tools:ignore="MissingPrefix"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

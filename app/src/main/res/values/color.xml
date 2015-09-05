@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="red">#FF6363</color>
+    <color name="green">#62BE33</color>
+    <color name="normal_black">#262932</color>
+    <color name="gray">#969696</color>
+    <color name="night_tv_color">#ffdddddd</color>
+    <color name="night_title">#262932</color>
+    <color name="night_bg">#3A3743</color>
+    <color name="light_bg">#fff0f0f0</color>
+
+    <color name="button_bg">#4E89FF</color>
+
+</resources>

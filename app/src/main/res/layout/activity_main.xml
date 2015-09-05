@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/rl"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/light_bg"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:ignore="MissingPrefix"
+              app:nightBackground="@color/night_bg"
+              tools:context=".MainActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="fill_parent"
+        />
+    <TextView
+        android:layout_width="fill_parent"
+        android:id="@+id/tv"
+        android:layout_below="@+id/toolBar"
+        android:gravity="center"
+        android:background="@color/red"
+        android:text="TextView"
+        android:textColor="@color/normal_black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_height="100dp"
+        app:nightTextColor="@color/night_tv_color"
+        app:nightBackground="@color/night_bg"
+        />
+
+
+    <Button
+        android:layout_below="@+id/tv"
+        android:layout_width="fill_parent"
+        android:text="Click"
+        android:id="@+id/button"
+        android:background="@color/button_bg"
+        android:textColor="@color/normal_black"
+        android:layout_height="50dp"
+        app:nightBackground="@color/night_bg"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fb"
+        android:layout_width="48dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:layout_height="48dp"
+        app:backgroundTint="#ff87ffeb"
+        app:rippleColor="#33728dff"
+        android:src="@mipmap/ic_launcher"
+        android:orientation="vertical" />
+
+</RelativeLayout>
