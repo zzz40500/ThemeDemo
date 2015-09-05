@@ -104,6 +104,7 @@ public class RelativeLayout  extends android.widget.RelativeLayout  implements C
         public SLayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
             mSkinHelper=SkinHelper.createDeFault();
+            mSkinHelper.init(null,attrs);
         }
 
         public void setSkinHelper(android.view.View view){

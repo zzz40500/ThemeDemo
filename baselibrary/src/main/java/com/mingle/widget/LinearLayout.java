@@ -116,6 +116,7 @@ public class LinearLayout extends android.widget.LinearLayout implements CircleR
         public SLayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
             mSkinHelper=SkinHelper.createDeFault();
+            mSkinHelper.init(null,attrs);
         }
 
         public void setSkinHelper(View view){
