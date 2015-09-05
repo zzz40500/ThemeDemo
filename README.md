@@ -42,7 +42,6 @@ LinearLayout 级别:
 ###gradle:
 /build.gradle
 ~~~
-jitpack.io
 
 repositories {
     maven {
@@ -132,7 +131,7 @@ SkinCompat.setSkinStyle(Activity activity, SkinStyle skinStyle,SkinStyleChangeLi
 ~~~
 
 ####使用CircularReveal 效果:
-5.0 上面用的是原生的 api
+5.0 上面用的是原生的 api,5.0下面才是自己的实现的方法.
 ~~~
  
 
@@ -166,9 +165,16 @@ WidgetFactor.getInstant().setWidgetParser(new WidgetFactor.WidgetParser() {
 第三方控件支持CircularReveal效果:  
 实现CircleRevealEnable这个接口,[模板](https://github.com/zzz40500/ThemeDemo/blob/master/%E6%A8%A1%E6%9D%BF)  
 
+###未来可能实现的:
+1. Toolbar 的日夜间切换的实现.
+* 替换CircularReveal算法  
+* 精简版
+
 #尾巴:  
 1. 实现原理主要是受到代码家在[Google I/O 2015 为 Android 开发者带来了哪些福利](http://www.jianshu.com/p/4f7f55471da2)里面的启发.  
 * 我在项目中也仅仅只是用在解决快速点击 View 导致的多响应,和使用CircularReveal效果.日夜间模式并没有这个需求.  
+
+
 
 
 
