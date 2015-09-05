@@ -23,6 +23,12 @@ public class SkinCompat {
 
     }
 
+    /**
+     *
+     * @param activity 当前 Activity
+     * @param skinStyle Dark(夜间),Light(日间)
+     * @param skinStyleChangeListener (转换监听器)
+     */
     public static void setSkinStyle(Activity activity, SkinStyle skinStyle,SkinStyleChangeListener skinStyleChangeListener) {
 
         if(skinStyleChangeListener != null)

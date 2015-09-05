@@ -25,7 +25,7 @@ public class ListViewSkinHelper extends ViewSkinHelper {
         super.init(view, attrs);
 
         if (attrs == null) {
-            enble = false;
+            enable = false;
             return;
         }
 
@@ -46,7 +46,11 @@ public class ListViewSkinHelper extends ViewSkinHelper {
 
     @Override
     public void setSkinStyle(SkinStyle skinStyle) {
+        if(!enable){
+            return;
+        }
         super.setSkinStyle(skinStyle);
+
         ListView listView = (ListView) mView;
         int dividerHeight = listView.getDividerHeight();
 

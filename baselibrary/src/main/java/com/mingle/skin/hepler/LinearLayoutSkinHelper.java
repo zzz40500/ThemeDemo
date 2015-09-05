@@ -25,7 +25,7 @@ public class LinearLayoutSkinHelper extends ViewSkinHelper {
     public void init(View view, AttributeSet attrs) {
         super.init(view, attrs);
         if (attrs == null) {
-            enble = false;
+            enable = false;
             return;
         }
 
@@ -36,6 +36,10 @@ public class LinearLayoutSkinHelper extends ViewSkinHelper {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void setSkinStyle(SkinStyle skinStyle) {
+        if(!enable){
+            return;
+        }
+
         super.setSkinStyle(skinStyle);
         if (skinStyle == SkinStyle.Light) {
             if (dividerRes != -1) {

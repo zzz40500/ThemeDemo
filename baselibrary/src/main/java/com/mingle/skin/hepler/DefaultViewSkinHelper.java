@@ -31,8 +31,7 @@ public class DefaultViewSkinHelper extends SkinHelper {
 
     private int lightTextColor;
     private int lightTextColorRes;
-
-    protected boolean enble=true;
+    public boolean enable=true;
 
 
     /**
@@ -41,9 +40,8 @@ public class DefaultViewSkinHelper extends SkinHelper {
      */
     public void init(View view, AttributeSet attrs) {
         mView = view;
-
-        if(attrs == null){
-            enble=false;
+        if (attrs == null) {
+            enable = false;
             return;
         }
 
@@ -73,6 +71,10 @@ public class DefaultViewSkinHelper extends SkinHelper {
     }
 
     public void setSkinStyle(SkinStyle skinStyle) {
+        if(!enable){
+            return;
+        }
+
 
         if (skinStyle == SkinStyle.Light) {
 

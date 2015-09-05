@@ -26,7 +26,7 @@ public class ViewSkinHelper extends SkinHelper {
     private int mDarkBackgroundColor = -1;
 
 
-    protected boolean enble=true;
+    public boolean enable=true;
 
 
     /**
@@ -37,7 +37,7 @@ public class ViewSkinHelper extends SkinHelper {
         mView = view;
 
         if(attrs == null){
-            enble=false;
+            enable=false;
             return;
         }
 
@@ -54,6 +54,11 @@ public class ViewSkinHelper extends SkinHelper {
     }
 
     public void setSkinStyle(SkinStyle skinStyle) {
+
+        if(!enable){
+            return;
+        }
+
 
         if (skinStyle == SkinStyle.Light) {
 

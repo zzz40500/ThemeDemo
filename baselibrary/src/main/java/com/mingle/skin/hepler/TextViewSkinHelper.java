@@ -44,8 +44,8 @@ public class TextViewSkinHelper extends ViewSkinHelper {
     @Override
     public void init(View view, AttributeSet attrs) {
         super.init(view, attrs);
-        if(attrs == null){
-            enble=false;
+        if (attrs == null) {
+            enable = false;
             return;
         }
 
@@ -104,6 +104,9 @@ public class TextViewSkinHelper extends ViewSkinHelper {
 
     @Override
     public void setSkinStyle(SkinStyle skinStyle) {
+        if(!enable){
+            return;
+        }
         super.setSkinStyle(skinStyle);
         if (skinStyle == SkinStyle.Dark) {
             TextView tv = (TextView) mView;
