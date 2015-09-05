@@ -27,11 +27,11 @@ public class DefaultViewSkinHelper extends SkinHelper {
     private int mDarkBackgroundColor = -1;
 
     private int nightTextColor;
-    private int nightTextColorRes;
+    private int mNightTextColorRes;
 
-    private int lightTextColor;
-    private int lightTextColorRes;
-    public boolean enable=true;
+    private int mLightTextColor;
+    private int mLightTextColorRes;
+    public boolean mEnable =true;
 
 
     /**
@@ -41,7 +41,7 @@ public class DefaultViewSkinHelper extends SkinHelper {
     public void init(View view, AttributeSet attrs) {
         mView = view;
         if (attrs == null) {
-            enable = false;
+            mEnable = false;
             return;
         }
 
@@ -55,13 +55,13 @@ public class DefaultViewSkinHelper extends SkinHelper {
             mDarkBackgroundColor = attrs.getAttributeIntValue(MATERIALDESIGNXML, "nightBackground", -1);
         }
 
-        lightTextColorRes = attrs.getAttributeResourceValue(ANDROIDXML, "textColor", -1);
-        if (lightTextColorRes == -1) {
-            lightTextColor = attrs.getAttributeIntValue(ANDROIDXML, "textColor", -1);
+        mLightTextColorRes = attrs.getAttributeResourceValue(ANDROIDXML, "textColor", -1);
+        if (mLightTextColorRes == -1) {
+            mLightTextColor = attrs.getAttributeIntValue(ANDROIDXML, "textColor", -1);
         }
 
-        nightTextColorRes = attrs.getAttributeResourceValue(MATERIALDESIGNXML, "nightTextColor", -1);
-        if (nightTextColorRes == -1) {
+        mNightTextColorRes = attrs.getAttributeResourceValue(MATERIALDESIGNXML, "nightTextColor", -1);
+        if (mNightTextColorRes == -1) {
             nightTextColor = attrs.getAttributeIntValue(MATERIALDESIGNXML, "nightTextColor", -1);
         }
     }
@@ -71,7 +71,7 @@ public class DefaultViewSkinHelper extends SkinHelper {
     }
 
     public void setSkinStyle(SkinStyle skinStyle) {
-        if(!enable){
+        if(!mEnable){
             return;
         }
 
@@ -88,8 +88,8 @@ public class DefaultViewSkinHelper extends SkinHelper {
             if(mView instanceof TextView) {
 
                 android.widget.TextView tv = (android.widget.TextView) mView;
-                if (nightTextColorRes != -1) {
-                    tv.setTextColor(mView.getResources().getColorStateList(nightTextColorRes));
+                if (mNightTextColorRes != -1) {
+                    tv.setTextColor(mView.getResources().getColorStateList(mNightTextColorRes));
                 } else if (nightTextColor != -1) {
                     tv.setTextColor(nightTextColor);
                 }
@@ -105,10 +105,10 @@ public class DefaultViewSkinHelper extends SkinHelper {
             if(mView instanceof TextView) {
 
                 android.widget.TextView tv= (android.widget.TextView) mView;
-                if (lightTextColorRes != -1) {
-                    tv.setTextColor(mView.getResources().getColorStateList(lightTextColorRes));
-                } else if (lightTextColor != -1) {
-                    tv.setTextColor(lightTextColor);
+                if (mLightTextColorRes != -1) {
+                    tv.setTextColor(mView.getResources().getColorStateList(mLightTextColorRes));
+                } else if (mLightTextColor != -1) {
+                    tv.setTextColor(mLightTextColor);
                 }
             }
 

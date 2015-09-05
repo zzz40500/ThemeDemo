@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ListView;
 
-import com.mingle.baselibrary.R;
 import com.mingle.skin.SkinStyle;
 
 /**
@@ -14,39 +13,37 @@ import com.mingle.skin.SkinStyle;
 public class ListViewSkinHelper extends ViewSkinHelper {
 
 
-    private int nightLVDivider = -1;
-    private int nightLVDividerRes = -1;
-    private int divider = -1;
-    private int dividerRes = -1;
-    private int dividerHeight = -1;
+    private int mNightLVDivider = -1;
+    private int mNightLVDividerRes = -1;
+    private int mDivider = -1;
+    private int mDividerRes = -1;
 
     @Override
     public void init(View view, AttributeSet attrs) {
         super.init(view, attrs);
 
         if (attrs == null) {
-            enable = false;
+            mEnable = false;
             return;
         }
 
 
-        dividerRes = attrs.getAttributeResourceValue(ANDROIDXML, "divider", -1);
-        dividerHeight = attrs.getAttributeResourceValue(ANDROIDXML, "dividerHeight", -1);
-        if (dividerRes == -1) {
-            divider = attrs.getAttributeIntValue(ANDROIDXML, "divider", -1);
+        mDividerRes = attrs.getAttributeResourceValue(ANDROIDXML, "divider", -1);
+        if (mDividerRes == -1) {
+            mDivider = attrs.getAttributeIntValue(ANDROIDXML, "divider", -1);
         }
 
 
-        nightLVDividerRes = attrs.getAttributeResourceValue(MATERIALDESIGNXML, "nightLVDivider", -1);
-        if (nightLVDividerRes != -1) {
-            nightLVDivider = attrs.getAttributeIntValue(MATERIALDESIGNXML, "nightLVDivider", -1);
+        mNightLVDividerRes = attrs.getAttributeResourceValue(MATERIALDESIGNXML, "nightLVDivider", -1);
+        if (mNightLVDividerRes != -1) {
+            mNightLVDivider = attrs.getAttributeIntValue(MATERIALDESIGNXML, "nightLVDivider", -1);
         }
 
     }
 
     @Override
     public void setSkinStyle(SkinStyle skinStyle) {
-        if(!enable){
+        if(!mEnable){
             return;
         }
         super.setSkinStyle(skinStyle);
@@ -60,22 +57,22 @@ public class ListViewSkinHelper extends ViewSkinHelper {
 
         if (skinStyle == SkinStyle.Dark) {
 
-            if (nightLVDividerRes != -1) {
+            if (mNightLVDividerRes != -1) {
 
                 try {
-                    listView.setDivider(new ColorDrawable(mView.getContext().getResources().getColor(nightLVDividerRes)));
+                    listView.setDivider(new ColorDrawable(mView.getContext().getResources().getColor(mNightLVDividerRes)));
 
                 } catch (Exception e) {
                     try {
-                        listView.setDivider(mView.getContext().getResources().getDrawable(nightLVDividerRes));
+                        listView.setDivider(mView.getContext().getResources().getDrawable(mNightLVDividerRes));
                     } catch (Exception e2) {
                         e2.printStackTrace();
                     }
                 }
                 listView.setDividerHeight(dividerHeight);
 
-            } else if (nightLVDivider != -1) {
-                listView.setDivider(new ColorDrawable(nightLVDivider));
+            } else if (mNightLVDivider != -1) {
+                listView.setDivider(new ColorDrawable(mNightLVDivider));
                 listView.setDividerHeight(dividerHeight);
 
             } else {
@@ -86,21 +83,21 @@ public class ListViewSkinHelper extends ViewSkinHelper {
 
         } else {
 
-            if (dividerRes != -1) {
+            if (mDividerRes != -1) {
 
                 try {
-                    listView.setDivider(new ColorDrawable(mView.getContext().getResources().getColor(dividerRes)));
+                    listView.setDivider(new ColorDrawable(mView.getContext().getResources().getColor(mDividerRes)));
 
                 } catch (Exception e) {
                     try {
-                    listView.setDivider(mView.getContext().getResources().getDrawable(dividerRes));
+                    listView.setDivider(mView.getContext().getResources().getDrawable(mDividerRes));
                     } catch (Exception e2) {
                         e2.printStackTrace();
                     }
                 }
                 listView.setDividerHeight(dividerHeight);
-            } else if (divider != -1) {
-                listView.setDivider(new ColorDrawable(divider));
+            } else if (mDivider != -1) {
+                listView.setDivider(new ColorDrawable(mDivider));
                 listView.setDividerHeight(dividerHeight);
             } else {
                 listView.setDivider(null);

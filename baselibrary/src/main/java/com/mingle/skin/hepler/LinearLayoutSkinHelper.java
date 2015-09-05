@@ -1,13 +1,10 @@
 package com.mingle.skin.hepler;
 
 import android.annotation.TargetApi;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import com.mingle.skin.SkinStyle;
 
@@ -17,36 +14,36 @@ import com.mingle.skin.SkinStyle;
 public class LinearLayoutSkinHelper extends ViewSkinHelper {
 
 
-    private int dividerRes;
-    private int darkDividerRes;
+    private int mDividerRes;
+    private int mDarkDividerRes;
 
 
     @Override
     public void init(View view, AttributeSet attrs) {
         super.init(view, attrs);
         if (attrs == null) {
-            enable = false;
+            mEnable = false;
             return;
         }
 
-        dividerRes = attrs.getAttributeResourceValue(ANDROIDXML, "divider", -1);
-        darkDividerRes = attrs.getAttributeResourceValue(MATERIALDESIGNXML, "nightDivider", -1);
+        mDividerRes = attrs.getAttributeResourceValue(ANDROIDXML, "divider", -1);
+        mDarkDividerRes = attrs.getAttributeResourceValue(MATERIALDESIGNXML, "nightDivider", -1);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void setSkinStyle(SkinStyle skinStyle) {
-        if(!enable){
+        if(!mEnable){
             return;
         }
 
         super.setSkinStyle(skinStyle);
         if (skinStyle == SkinStyle.Light) {
-            if (dividerRes != -1) {
+            if (mDividerRes != -1) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     LinearLayout linearLayout = (LinearLayout) mView;
                     try {
-                        linearLayout.setDividerDrawable(mView.getResources().getDrawable(dividerRes));
+                        linearLayout.setDividerDrawable(mView.getResources().getDrawable(mDividerRes));
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -56,11 +53,11 @@ public class LinearLayoutSkinHelper extends ViewSkinHelper {
 
         } else {
 
-            if (darkDividerRes != -1) {
+            if (mDarkDividerRes != -1) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     LinearLayout linearLayout = (LinearLayout) mView;
                     try {
-                        linearLayout.setDividerDrawable(mView.getResources().getDrawable(darkDividerRes));
+                        linearLayout.setDividerDrawable(mView.getResources().getDrawable(mDarkDividerRes));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

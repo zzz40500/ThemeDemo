@@ -6,11 +6,7 @@ import android.graphics.Region;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewAnimationUtils;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
 
-import com.mingle.listener.SimpleAnimationListener;
 import com.mingle.widget.animation.CRAnimation;
 import com.nineoldandroids.animation.ValueAnimator;
 
@@ -20,7 +16,7 @@ import com.nineoldandroids.animation.ValueAnimator;
  */
 public class CircleRevealHelper {
 
-    private ValueAnimator valueAnimator;
+    private ValueAnimator mValueAnimator;
 
     public CircleRevealHelper(View view) {
         mView = view;
@@ -39,7 +35,6 @@ public class CircleRevealHelper {
     private int mAnchorX, mAnchorY;
     private float mRadius;
 
-    private boolean isCircularReveal = false;
 
 
     private CircleRevealEnable mCircleRevealEnable;
@@ -66,9 +61,9 @@ public class CircleRevealHelper {
         } else {
 
 
-             valueAnimator = ValueAnimator.ofFloat(startRadius, endRadius);
+             mValueAnimator = ValueAnimator.ofFloat(startRadius, endRadius);
 
-            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
                     mRadius = (float) animation.getAnimatedValue();
@@ -77,28 +72,10 @@ public class CircleRevealHelper {
                     mView.postInvalidate();
                 }
             });
-            valueAnimator.addListener(new SimpleAnimationListener() {
-                @Override
-                public void onAnimationStart(com.nineoldandroids.animation.Animator animation) {
-                    isCircularReveal = true;
-                }
 
 
-                @Override
-                public void onAnimationEnd(com.nineoldandroids.animation.Animator animation) {
-                    isCircularReveal = false;
-                }
-
-
-                @Override
-                public void onAnimationCancel(com.nineoldandroids.animation.Animator animation) {
-                    isCircularReveal = false;
-                }
-
-            });
-
-            valueAnimator.setDuration(1200);
-            return  new CRAnimation(valueAnimator);
+            mValueAnimator.setDuration(1200);
+            return  new CRAnimation(mValueAnimator);
 
         }
     }
@@ -107,7 +84,7 @@ public class CircleRevealHelper {
 
 
     public void draw(Canvas canvas) {
-        if (valueAnimator != null && valueAnimator.isRunning()) {
+        if (mValueAnimator != null && mValueAnimator.isRunning()) {
             canvas.save();
             canvas.translate(0, 0);
             mPath.reset();
