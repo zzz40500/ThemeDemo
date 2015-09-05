@@ -1,5 +1,3 @@
-# ThemeDemo
-日夜间模式切换
 效果图:
 
 ![ThemeDemo.gif](http://upload-images.jianshu.io/upload_images/166866-f4a26bbeebb3fff9.gif?imageMogr2/auto-orient/strip)
@@ -11,7 +9,7 @@
 >关于多主题实现的,我这里的做法是继承AppCompatActivity,置换了AppCompatDelegate中AppCompatViewInflater中的createView 方法.实现了对 xml 控件的控制.
 
 
-解决的问题:
+实现:
 1. 实现了日夜模式的切换.(不重启 Acitivity )
 * 解决了因为快速点击 View 导致的多次响应点击事件.
 * 内部实现了 Android 5.0 的CircularReveal效果.
@@ -40,7 +38,24 @@ LinearLayout 级别:
 
 
 
-使用方法:
+
+###gradle
+/build.gradle
+~~~
+jitpack.io
+
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+~~~
+/app/build.gradle
+~~~
+compile 'com.github.zzz40500:ThemeDemo:0.1'
+~~~
+
+##使用方法:
  Activity 继承MAppCompatActivity  
 布局上
 ~~~
@@ -102,7 +117,7 @@ LinearLayout 级别:
 处女座在根控件加入`tools:ignore="MissingPrefix"`
 
 
-切换主题方法:
+###切换主题方法:
 ~~~
 
 
@@ -115,7 +130,7 @@ LinearLayout 级别:
 SkinCompat.setSkinStyle(Activity activity, SkinStyle skinStyle,SkinStyleChangeListener skinStyleChangeListener) 
 ~~~
 
-使用CircularReveal 效果:
+###使用CircularReveal 效果:
 ~~~
  
 
@@ -128,7 +143,23 @@ if (crA != null)
 ~~~
 
 
-扩展:
+###扩展:
+支持对原生控件的解析时期替换:
+~~~
+WidgetFactor.getInstant().setWidgetParser(new WidgetFactor.WidgetParser() {
+    @Override
+    public View parseWidget(String name, Context context, AttributeSet attrs) {
+        //布局中的名称
+        if (name.equals("TextView")) {
+            return new EditText(context, attrs);
+        }
+        //返回 null 则不替换.
+        return null;
+    }
+});
+~~~
+
+
 第三方控件支持CircularReveal效果:
 实现CircleRevealEnable这个接口:
 模板:
