@@ -1,10 +1,12 @@
 package com.mingle.themedemo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.MAppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +16,8 @@ import com.mingle.circletreveal.CircularRevealCompat;
 import com.mingle.skin.SkinConfig;
 import com.mingle.skin.SkinStyle;
 import com.mingle.skin.hepler.SkinCompat;
+import com.mingle.widget.EditText;
+import com.mingle.widget.WidgetFactor;
 import com.mingle.widget.animation.CRAnimation;
 import com.mingle.widget.animation.SimpleAnimListener;
 
@@ -32,6 +36,7 @@ public class MainActivity extends MAppCompatActivity implements View.OnClickList
         mRl = (RelativeLayout) findViewById(R.id.rl);
         setSupportActionBar(toolbar);
         mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fb);
+
 
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {

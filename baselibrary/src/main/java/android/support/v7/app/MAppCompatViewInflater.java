@@ -27,6 +27,7 @@ import com.mingle.widget.RatingBar;
 import com.mingle.widget.RelativeLayout;
 import com.mingle.widget.Spinner;
 import com.mingle.widget.TextView;
+import com.mingle.widget.WidgetFactor;
 
 import java.lang.reflect.Constructor;
 import java.util.Map;
@@ -46,9 +47,9 @@ public class MAppCompatViewInflater {
 
     private final Object[] mConstructorArgs = new Object[2];
 
-    public  View createView(View parent, final String name, @NonNull Context context,
-                                 @NonNull AttributeSet attrs, boolean inheritContext,
-                                 boolean readAndroidTheme, boolean readAppTheme) {
+    public View createView(View parent, final String name, @NonNull Context context,
+                           @NonNull AttributeSet attrs, boolean inheritContext,
+                           boolean readAndroidTheme, boolean readAppTheme) {
         final Context originalContext = context;
 
         // We can emulate Lollipop's android:theme attribute propagating down the view hierarchy
@@ -61,6 +62,12 @@ public class MAppCompatViewInflater {
             context = themifyContext(context, attrs, readAndroidTheme, readAppTheme);
         }
 
+
+        android.view.View  view = WidgetFactor.getInstant().parseWidget(name,context,attrs);
+
+        if (view != null) {
+            return view;
+        }
         // We need to 'inject' our tint aware Views in place of the standard framework versions
         switch (name) {
             case "EditText":
