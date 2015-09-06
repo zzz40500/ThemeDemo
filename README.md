@@ -1,3 +1,5 @@
+[![Android Gems](http://www.android-gems.com/badge/zzz40500/ThemeDemo.svg?branch=master)](http://www.android-gems.com/lib/zzz40500/ThemeDemo)
+
 #效果图:
 
 ![ThemeDemo.gif](http://upload-images.jianshu.io/upload_images/166866-f4a26bbeebb3fff9.gif?imageMogr2/auto-orient/strip)
