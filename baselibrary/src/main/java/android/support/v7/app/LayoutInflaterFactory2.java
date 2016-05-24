@@ -34,6 +34,7 @@ import com.dim.widget.RatingBar;
 import com.dim.widget.RelativeLayout;
 import com.dim.widget.Spinner;
 import com.dim.widget.TextView;
+import com.dim.widget.WidgetFactor;
 import com.mingle.baselibrary.R;
 
 import java.lang.reflect.Constructor;
@@ -89,8 +90,7 @@ public class LayoutInflaterFactory2 implements LayoutInflater.Factory2 {
             context = TintContextWrapper.wrap(context);
         }
 
-        android.view.View view = null;
-//                WidgetFactor.getInstant().parseWidget(name,context,attrs);
+        android.view.View view = WidgetFactor.getInstant().parseWidget(name,context,attrs);
 
 
         // We need to 'inject' our tint aware Views in place of the standard framework versions
