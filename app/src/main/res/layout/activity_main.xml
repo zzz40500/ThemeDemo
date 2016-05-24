@@ -8,7 +8,7 @@
               android:orientation="vertical"
               tools:ignore="MissingPrefix"
               app:nightBackground="@color/night_bg"
-              tools:context=".MainActivity">
+              tools:context="com.dim.themedemo.MainActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolBar"
         android:layout_height="?attr/actionBarSize"
